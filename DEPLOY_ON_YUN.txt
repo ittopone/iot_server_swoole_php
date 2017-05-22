@@ -1,0 +1,27 @@
+//云服务器的ssl证书路径：
+/root/ssl/214051997030712/214051997030712.key
+/root/ssl/214051997030712/214051997030712.pem
+
+//构建webSocket服务器(带ssl证书):(in Server.php)
+$this->mServ = new \swoole_websocket_server($ipAddr, $portForApp, SWOOLE_BASE, SWOOLE_SOCK_TCP | SWOOLE_SSL);
+'ssl_key_file' => '/root/ssl/214051997030712/214051997030712.key',
+'ssl_cert_file' => '/root/ssl/214051997030712/214051997030712.pem',
+'ssl_cert_file' => '/root/ssl/214051997030712/public.pem',
+
+//版本号文件存储路径:(in MyGlobal.php)
+/data/samba_share/project/php/iot_server/appVersion.php
+
+//swoole的日志文件路径:(in Server.php)
+/data/samba_share/project/php/iot_server/swoole.log
+
+//websocket客户端访问websocket服务器(添加了ssl证书)方式：
+wss://www.yujunwu.top:8900
+
+//创建服务器对象:(in iot_server.php)
+$gServ = new Server('120.77.73.31', 8900, 8901);
+
+//数据库配置:(in Database.php)
+defined('SERVER_NAME') or define('SERVER_NAME', 'localhost');
+defined('USER_NAME') or define('USER_NAME', 'root');
+defined('PASSWORD') or define('PASSWORD', 'eton-tech-39465731');
+defined('DB_NAME') or define('DB_NAME', 'eton_db');
